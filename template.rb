@@ -79,13 +79,13 @@ def add_gems
   end
 end
 
-def add_sql_server
-  gem 'activerecord-sqlserver-adapter'
-end
+# def add_sql_server
+#   gem 'activerecord-sqlserver-adapter'
+# end
 
-def add_postgres
-  gem 'pg'
-end
+# def add_postgres
+#   gem 'pg'
+# end
 
 def set_application_name
   # Add Application Name to Config
