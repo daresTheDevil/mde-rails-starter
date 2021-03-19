@@ -10,7 +10,7 @@ def add_template_repository_to_source_path
   puts ""
   puts "getting git"
   puts ""
-  
+
   if __FILE__ =~ %r{\Ahttps?://}
     require 'tmpdir'
     source_paths.unshift(tempdir = Dir.mktmpdir('mde-rails-starter-'))
@@ -64,6 +64,7 @@ def add_gems
   gem 'audited', '~> 4.10'
   gem 'secure_headers', '~> 6.3'
   gem 'azure-storage', '~> 0.15.0.preview'
+  gem 'pg'
   # Remove sass-rails
   gsub_file 'Gemfile', /^gem\s+["']sass-rails["'].*$/, ''
 
@@ -251,18 +252,7 @@ after_bundle do
   add_whenever
   add_sitemap
 
-  if yes?('Do you need login functionality?')
-    add_users
-    add_authorization
-    add_multiple_authentication
-  end
-
-  if yes?('Does this app use SQL Server?')
-    add_users
-    add_authorization
-    add_multiple_authentication
-  end
-  if no?('Does this app use SQL Server?') && yes?('Does this app use Postgres?')
+  if yes?('Do you need login functionality? (yes/no)')
     add_users
     add_authorization
     add_multiple_authentication
