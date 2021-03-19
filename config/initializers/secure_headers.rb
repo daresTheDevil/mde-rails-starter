@@ -1,5 +1,4 @@
 # having no configuration throws an error, so we need this if we want to "disable" secure_headers in dev
-SecureHeaders::OPT_OUT
 # SecureHeaders::Configuration.default do |config|
 #   config.cookies = {
 #     secure: true, # mark all cookies as "Secure"
