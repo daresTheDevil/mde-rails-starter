@@ -42,10 +42,14 @@ def rails_6?
 end
 
 def add_gems
+  gem 'audited', '~> 4.10'
+  gem 'azure-storage', '~> 0.15.0.preview'
   gem 'devise', '~> 4.7', '>= 4.7.1'
   gem 'devise_masquerade', '~> 1.2'
   gem 'friendly_id', '~> 5.3'
+  gem 'hotwire-rails'
   gem 'image_processing'
+  gem 'js_from_routes', group: :development
   gem 'mini_magick', '~> 4.10', '>= 4.10.1'
   gem 'name_of_person', '~> 1.1'
   gem 'noticed', '~> 1.2'
@@ -53,17 +57,13 @@ def add_gems
   gem 'omniauth-github', '~> 1.4'
   gem 'omniauth-twitter', '~> 1.4'
   gem 'pundit', '~> 2.1'
+  gem 'secure_headers', '~> 6.3'
+  gem 'seed-fu'
   gem 'sidekiq', '~> 6.0', '>= 6.0.3'
   gem 'sitemap_generator', '~> 6.1', '>= 6.1.2'
-  gem 'whenever', require: false
-  gem 'hotwire-rails'
   gem 'vite_rails'
-  gem 'js_from_routes', group: :development
-  gem 'seed-fu'
+  gem 'whenever', require: false
   gem 'view_component', '~> 2.25', require: 'view_component/engine'
-  gem 'audited', '~> 4.10'
-  gem 'secure_headers', '~> 6.3'
-  gem 'azure-storage', '~> 0.15.0.preview'
   gem 'pg'
   # Remove sass-rails
   gsub_file 'Gemfile', /^gem\s+["']sass-rails["'].*$/, ''
@@ -78,14 +78,6 @@ def add_gems
     end
   end
 end
-
-# def add_sql_server
-#   gem 'activerecord-sqlserver-adapter'
-# end
-
-# def add_postgres
-#   gem 'pg'
-# end
 
 def set_application_name
   # Add Application Name to Config
