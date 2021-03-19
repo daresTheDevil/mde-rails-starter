@@ -7,17 +7,21 @@ require 'shellwords'
 # invoked remotely via HTTP, that means the files are not present locally.
 # In that case, use `git clone` to download them to a local temporary dir.
 def add_template_repository_to_source_path
+  puts ""
+  puts "getting git"
+  puts ""
+  
   if __FILE__ =~ %r{\Ahttps?://}
     require 'tmpdir'
-    source_paths.unshift(tempdir = Dir.mktmpdir('jumpstart-'))
+    source_paths.unshift(tempdir = Dir.mktmpdir('mde-rails-starter-'))
     at_exit { FileUtils.remove_entry(tempdir) }
     git clone: [
       '--quiet',
-      'https://github.com/ElMassimo/jumpstart-vite.git',
+      'https://github.com/davidbkay/mde-rails-starter.git',
       tempdir
     ].map(&:shellescape).join(' ')
 
-    if (branch = __FILE__[%r{jumpstart-vite/(.+)/template.rb}, 1])
+    if (branch = __FILE__[%r{mde-rails-starter/(.+)/template.rb}, 1])
       Dir.chdir(tempdir) { git checkout: branch }
     end
   else
